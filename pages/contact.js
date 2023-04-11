@@ -1,11 +1,11 @@
-import { getSession, useSession } from 'next-auth/react'
-import React from 'react'
-import Head from 'next/head'
-import Header from '../components/Header'
+import { getSession, useSession } from 'next-auth/react';
+import React from 'react';
+import Head from 'next/head';
+import Header from '../components/Header';
 
-const contact = ({ data }) => {
-  const { data: session } = useSession()
-  console.log('session:', session)
+const Contact = ({ data }) => {
+  const { data: session } = useSession();
+  console.log('session:', session);
   return (
     <>
       <div className="mx-auto max-w-7xl">
@@ -17,13 +17,13 @@ const contact = ({ data }) => {
         <div>Contact us page, {data}</div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default contact
+export default Contact;
 
 export async function getServerSideProps(context) {
-  const session = await getSession(context)
+  const session = await getSession(context);
   //secure pages on server side next-auth library...
   if (!session) {
     return {
@@ -31,12 +31,12 @@ export async function getServerSideProps(context) {
         destination: `/api/auth/signin?callbackUrl=${process.env.CALLBACK_URL}`,
         permanent: false,
       },
-    }
+    };
   }
   return {
     props: {
       session,
       data: session ? 'You are logged in contact us page' : 'logged out',
     },
-  }
+  };
 }

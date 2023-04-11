@@ -1,8 +1,8 @@
-import Link from 'next/link'
-import { useSession, signIn, signOut } from 'next-auth/react'
+import Link from 'next/link';
+import { useSession, signIn, signOut } from 'next-auth/react';
 function Header() {
-  const { data: session, status } = useSession()
-  const loading = status === 'loading'
+  const { data: session, status } = useSession();
+  const loading = status === 'loading';
 
   return (
     <>
@@ -16,16 +16,12 @@ function Header() {
             />
           </Link>
           <div className="hidden items-center space-x-5 md:inline-flex">
-            <Link href="/about" legacyBehavior>
-              <a>
-                <h3>About</h3>
-              </a>
+            <Link href="/about">
+              <h3>About</h3>
             </Link>
 
-            <Link href="/contact" legacyBehavior>
-              <a>
-                <h3>Contact</h3>
-              </a>
+            <Link href="/contact">
+              <h3>Contact</h3>
             </Link>
             <h3 className="rounded-full bg-green-600 px-4 py-1 text-white ">
               Follow
@@ -43,8 +39,8 @@ function Header() {
             <Link href="" legacyBehavior>
               <a
                 onClick={(e) => {
-                  e.preventDefault()
-                  signIn()
+                  e.preventDefault();
+                  signIn();
                 }}
               >
                 <h3>Sign In</h3>
@@ -55,8 +51,8 @@ function Header() {
             <Link href="" legacyBehavior>
               <a
                 onClick={(e) => {
-                  e.preventDefault()
-                  signOut()
+                  e.preventDefault();
+                  signOut();
                 }}
               >
                 <h3>Sign out</h3>
@@ -71,7 +67,7 @@ function Header() {
         <h1>{session ? `Welcome, ${session.user?.name}` : ''}</h1>
       </div>
     </>
-  )
+  );
 }
 
-export default Header
+export default Header;

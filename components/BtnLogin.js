@@ -1,5 +1,5 @@
-import React from 'react'
-import { signIn } from 'next-auth/react'
+import React from 'react';
+import { signIn } from 'next-auth/react';
 
 const BtnLogin = ({ provider, bgColor, txtColor }) => {
   return (
@@ -12,10 +12,10 @@ const BtnLogin = ({ provider, bgColor, txtColor }) => {
         Sign in with {provider.name}
       </button>
     </div>
-  )
-}
+  );
+};
 
 BtnLogin.defaultProps = {
   txtColor: '#eee',
-}
-export default BtnLogin
+};
+export default BtnLogin;

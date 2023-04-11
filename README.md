@@ -1,31 +1,30 @@
 # Intermediate Next.js Training - Final project
 
 ## Description
-A full-stack project based on Next.js and Tailwind CSS (v3.0). 
+
+A full-stack project based on Next.js and Tailwind CSS (v3.0).
 This is a medium clone using Sanity as the backend and CMS.
 
 ## Tasks
+
 - fork this project and provide repo access to: @rcdelacruz
 - create reusable Components
 
-  ![](/public/component-tree.png "Component tree")
-
+  ![](/public/component-tree.png 'Component tree')
 
 - add husky configuration
-- add Storybook 
+- add Storybook
 - deploy to your own Chromatic
 - create HOC for auth using nextauth
 - refactor `legacyBehavior`
-
 
 --
 
 ## How to run Sanity Studio locally
 
-1. Go to `/sanity-web-training` 
-2. Install packages 
+1. Go to `/sanity-web-training`
+2. Install packages
 3. Run `yarn dev`
-
 
 --
 
