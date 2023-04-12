@@ -14,7 +14,7 @@
     "lint": "next lint",
     "prettier": "prettier --write .",
     "prepare": "husky install",
-    "chromatic": "npx chromatic --project-token=1d32d1961052"
+    "chromatic": "chromatic --exit-zero-on-changes"
   },
   "dependencies": {
     "@next-auth/mongodb-adapter": "^1.1.1",
