@@ -2,6 +2,9 @@ import { signIn, signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
 import Logo from '../Logo/Logo';
 import NavBar from '../NavBar/NavBar';
+
+const navList = require('../NavBar/navList.json');
+
 function Header() {
   const { data: session, status } = useSession();
   const loading = status === 'loading';
@@ -11,7 +14,7 @@ function Header() {
       <header className="mx-auto flex max-w-7xl justify-between p-5 ">
         <div className="flex items-center space-x-5">
           <Logo />
-          <NavBar />
+          <NavBar list={navList} />
         </div>
         <div
           className={`flex items-center space-x-5 text-green-600 ${

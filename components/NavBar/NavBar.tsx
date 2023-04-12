@@ -1,5 +1,4 @@
 import Link from 'next/link';
-const navList = require('./navList.json');
 
 export interface navLink {
   id: number;
@@ -12,7 +11,7 @@ type menuItems = {
   list: Array<navLink>;
 };
 
-function NavBar({ list = navList }: menuItems) {
+function NavBar({ list }: menuItems) {
   return (
     <>
       <div className="hidden items-center space-x-5 md:inline-flex">
