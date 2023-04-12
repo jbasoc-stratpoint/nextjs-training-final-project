@@ -1,4 +1,3 @@
-import React from 'react';
 import './button.css';
 
 interface ButtonProps {
@@ -45,7 +44,7 @@ export const Button = ({
       )}
       {...props}
     >
-      {label}
+      {label} test
       <style jsx>{`
         button {
           background-color: ${backgroundColor};

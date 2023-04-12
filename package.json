@@ -13,7 +13,8 @@
     "build-storybook": "storybook build",
     "lint": "next lint",
     "prettier": "prettier --write .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "chromatic": "npx chromatic --project-token=1d32d1961052"
   },
   "dependencies": {
     "@next-auth/mongodb-adapter": "^1.1.1",
@@ -39,6 +40,7 @@
     "@types/node": "17.0.4",
     "@types/react": "18.0.33",
     "autoprefixer": "^10.4.14",
+    "chromatic": "^6.17.3",
     "cross-env": "^7.0.3",
     "eslint": "^8.38.0",
     "eslint-config-next": "13.3.0",
@@ -50,5 +52,9 @@
     "storybook": "^7.0.2",
     "tailwindcss": "^3.3.1",
     "typescript": "4.5.4"
-  }
+  },
+  "name": "",
+  "version": "",
+  "readme": "ERROR: No README data found!",
+  "_id": "@"
 }
