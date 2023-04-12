@@ -1,7 +1,7 @@
 import { getSession, signIn } from 'next-auth/react';
-import React, { useState, useEffect } from 'react';
-import Header from '../components/Header';
 import Head from 'next/head';
+import { useEffect, useState } from 'react';
+import Header from '../components/Header/Header';
 function About() {
   const [loading, setLoading] = useState(true);
 

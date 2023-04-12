@@ -1,5 +1,6 @@
+import { signIn, signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
-import { useSession, signIn, signOut } from 'next-auth/react';
+import Logo from '../Logo/Logo';
 function Header() {
   const { data: session, status } = useSession();
   const loading = status === 'loading';
@@ -8,13 +9,7 @@ function Header() {
     <>
       <header className="mx-auto flex max-w-7xl justify-between p-5 ">
         <div className="flex items-center space-x-5">
-          <Link href="/">
-            <img
-              className="w-44 cursor-pointer object-contain"
-              src="https://links.papareact.com/yvf"
-              alt=""
-            />
-          </Link>
+          <Logo />
           <div className="hidden items-center space-x-5 md:inline-flex">
             <Link href="/about">
               <h3>About</h3>
@@ -36,27 +31,25 @@ function Header() {
           }`}
         >
           {!loading && !session && (
-            <Link href="" legacyBehavior>
-              <a
-                onClick={(e) => {
-                  e.preventDefault();
-                  signIn();
-                }}
-              >
-                <h3>Sign In</h3>
-              </a>
+            <Link
+              href=""
+              onClick={(e) => {
+                e.preventDefault();
+                signIn();
+              }}
+            >
+              <h3>Sign In</h3>
             </Link>
           )}
           {session && (
-            <Link href="" legacyBehavior>
-              <a
-                onClick={(e) => {
-                  e.preventDefault();
-                  signOut();
-                }}
-              >
-                <h3>Sign out</h3>
-              </a>
+            <Link
+              href=""
+              onClick={(e) => {
+                e.preventDefault();
+                signOut();
+              }}
+            >
+              <h3>Sign out</h3>
             </Link>
           )}
 
@@ -64,7 +57,7 @@ function Header() {
         </div>
       </header>
       <div className="mx-auto flex max-w-7xl justify-between p-5 ">
-        <h1>{session ? `Welcome, ${session.user?.name}` : ''}</h1>
+        <span>{session ? `Welcome, ${session.user?.name}` : ''}</span>
       </div>
     </>
   );

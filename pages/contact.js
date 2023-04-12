@@ -1,7 +1,6 @@
 import { getSession, useSession } from 'next-auth/react';
-import React from 'react';
 import Head from 'next/head';
-import Header from '../components/Header';
+import Header from '../components/Header/Header';
 
 const Contact = ({ data }) => {
   const { data: session } = useSession();

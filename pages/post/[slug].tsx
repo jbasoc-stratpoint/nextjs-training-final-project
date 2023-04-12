@@ -1,11 +1,12 @@
 import { GetStaticProps } from 'next';
+import { getSession, signIn } from 'next-auth/react';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import PortableText from 'react-portable-text';
+import Header from '../../components/Header/Header';
 import { sanityClient, urlFor } from '../../sanity';
 import { Post } from '../../typings';
-import PortableText from 'react-portable-text';
-import { useForm, SubmitHandler } from 'react-hook-form';
-import { useState, useEffect } from 'react';
-import { getSession, signIn } from 'next-auth/react';
-import Header from '../../components/Header';
 // import {} from 'next-auth/client'
 interface Props {
   post: Post;
@@ -61,22 +62,31 @@ function PostArticle({ post }: Props) {
     <>
       <Header />
       <main className="mx-auto max-w-7xl">
-        <img
-          className="h-40 w-full object-cover"
-          src={urlFor(post.mainImage).url()!}
-          alt=""
-        />
+        {post.mainImage && (
+          <Image
+            className="h-40 w-full object-cover"
+            src={urlFor(post.mainImage).url()!}
+            width={30}
+            height={30}
+            alt=""
+          />
+        )}
+
         <article className="mx-auto max-w-3xl p-5">
           <h1 className="mb-3 mt-10 text-3xl ">{post.title}</h1>
           <h2 className="mb-2 text-xl font-light text-gray-500">
             {post.description}
           </h2>
           <div className="flex items-center space-x-2">
-            <img
-              className="h-10 w-10 rounded-full"
-              src={urlFor(post.author.image).url()!}
-              alt=""
-            />
+            {post.author.image && (
+              <Image
+                className="h-10 w-10 rounded-full"
+                src={urlFor(post.author.image).url()!}
+                alt=""
+                width={30}
+                height={30}
+              />
+            )}
 
             <p className="text-sm font-extralight">
               Blog post by{' '}
