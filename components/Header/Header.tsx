@@ -39,7 +39,9 @@ function Header() {
               href=""
               onClick={(e) => {
                 e.preventDefault();
-                signOut();
+                signOut({
+                  callbackUrl: `${window.location.origin}`,
+                });
               }}
             >
               <h3>Sign out</h3>
