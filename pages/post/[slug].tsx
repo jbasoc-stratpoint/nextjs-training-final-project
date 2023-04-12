@@ -1,12 +1,11 @@
 import { GetStaticProps } from 'next';
-import { getSession, signIn } from 'next-auth/react';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import PortableText from 'react-portable-text';
-import Header from '../../components/Header/Header';
 import { sanityClient, urlFor } from '../../sanity';
 import { Post } from '../../typings';
+import withAuth from '../api/auth/withAuth';
 // import {} from 'next-auth/client'
 interface Props {
   post: Post;
@@ -21,7 +20,6 @@ interface IFormInput {
 
 function PostArticle({ post }: Props) {
   const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(true);
 
   const {
     register,
@@ -44,30 +42,15 @@ function PostArticle({ post }: Props) {
       });
   };
 
-  useEffect(() => {
-    const securePage = async () => {
-      const session = await getSession();
-      if (!session) {
-        signIn();
-      } else {
-        setLoading(false);
-      }
-    };
-    securePage();
-  }, []);
-  if (loading) {
-    return <h2>loading...</h2>;
-  }
   return (
     <>
-      <Header />
       <main className="mx-auto max-w-7xl">
         {post.mainImage && (
           <Image
             className="h-40 w-full object-cover"
             src={urlFor(post.mainImage).url()!}
-            width={30}
-            height={30}
+            width={1280}
+            height={100}
             alt=""
           />
         )}
@@ -202,7 +185,7 @@ function PostArticle({ post }: Props) {
   );
 }
 
-export default PostArticle;
+export default withAuth(PostArticle);
 
 export const getStaticPaths = async () => {
   const query = `*[_type=='post']{

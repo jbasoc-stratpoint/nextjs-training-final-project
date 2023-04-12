@@ -1,25 +1,22 @@
-import { getSession, useSession } from 'next-auth/react';
+import { getSession } from 'next-auth/react';
 import Head from 'next/head';
-import Header from '../components/Header/Header';
+import withAuth from './api/auth/withAuth';
 
 const Contact = ({ data }) => {
-  const { data: session } = useSession();
-  console.log('session:', session);
   return (
     <>
       <div className="mx-auto max-w-7xl">
         <Head>
-          <title>Medium Blog</title>
+          <title>Medium Blog: Contact</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <Header />
         <div>Contact us page, {data}</div>
       </div>
     </>
   );
 };
 
-export default Contact;
+export default withAuth(Contact);
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
