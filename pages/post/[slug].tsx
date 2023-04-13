@@ -33,7 +33,6 @@ function PostArticle({ post }: Props) {
       body: JSON.stringify(data),
     })
       .then(() => {
-        console.log(data);
         setSubmitted(true);
       })
       .catch((err) => {

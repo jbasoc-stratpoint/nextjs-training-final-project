@@ -13,16 +13,13 @@ const withAuth = (Component: React.FunctionComponent<Props>) => {
   const AuthenticatedComponent = (props: Props) => {
     const [loading, setLoading] = useState(true);
 
-    const { data: session, status } = useSession();
-    console.log(session);
-    console.log(status);
+    const { status } = useSession();
 
     useEffect(() => {
       const securePage = async () => {
         const session = await getSession();
 
         if (!session) {
-          console.log('PASOK SA SIGN IN');
           signIn();
         } else {
           setLoading(false);
