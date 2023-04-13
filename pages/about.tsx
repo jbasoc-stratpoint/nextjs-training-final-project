@@ -9,7 +9,7 @@ function About() {
           <title>Medium Blog: About</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <div>In About page</div>
+        <div className="p-5">In About page</div>
       </div>
     </>
   );

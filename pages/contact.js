@@ -10,7 +10,7 @@ const Contact = ({ data }) => {
           <title>Medium Blog: Contact</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <div>Contact us page, {data}</div>
+        <div className="p-5">Contact us page, {data}</div>
       </div>
     </>
   );
