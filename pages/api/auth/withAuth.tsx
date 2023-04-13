@@ -2,6 +2,7 @@ import { getSession, signIn } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import Footer from '../../../components/Footer/Footer';
 import Header from '../../../components/Header/Header';
+import { Spinner } from '../../../components/Spinner/Spinner';
 import { Post } from '../../../typings';
 
 export interface Props {
@@ -24,7 +25,11 @@ const withAuth = (Component: React.FunctionComponent<Props>) => {
       securePage();
     }, []);
     if (loading) {
-      return <h2>loading...</h2>;
+      return (
+        <div className="mx-auto max-w-7xl flex items-center justify-center min-h-screen">
+          <Spinner />
+        </div>
+      );
     }
     return (
       <div className="mx-auto max-w-7xl min-h-screen">
