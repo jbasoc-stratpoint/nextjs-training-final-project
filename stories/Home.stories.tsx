@@ -38,6 +38,13 @@ Default.args = {
   ],
   imageUrl: '/test-image.jpg',
 };
+Default.parameters = {
+  nextAuthMock: {
+    session: {
+      status: 'unauthenticated',
+    },
+  },
+};
 
 export const SignedIn: Template = {};
 SignedIn.parameters = {
