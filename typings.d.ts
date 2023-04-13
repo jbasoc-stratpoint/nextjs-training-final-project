@@ -17,7 +17,8 @@ export interface Post {
     current: string;
   };
   body: [object];
-  fallbackbody?: string;
+  fallbackbody?: string; //Fallback object to be used only for StoryBook
+  imageUrl?: string; //Fallback object to be used only for StoryBook
 }
 
 export interface Comment {

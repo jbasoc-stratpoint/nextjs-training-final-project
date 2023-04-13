@@ -9,7 +9,6 @@ import withAuth from '../api/auth/withAuth';
 // import {} from 'next-auth/client'
 interface Props {
   post: Post;
-  imageUrl?: string;
 }
 
 interface IFormInput {
@@ -19,7 +18,7 @@ interface IFormInput {
   comment: string;
 }
 
-function PostArticle({ post, imageUrl }: Props) {
+function PostArticle({ post }: Props) {
   const [submitted, setSubmitted] = useState(false);
 
   const {
@@ -49,7 +48,7 @@ function PostArticle({ post, imageUrl }: Props) {
         {post.mainImage && (
           <Image
             className="h-40 w-full object-cover"
-            src={imageUrl || urlFor(post.mainImage).url()!}
+            src={post.imageUrl || urlFor(post.mainImage).url()!}
             width={1280}
             height={100}
             alt=""
@@ -65,7 +64,7 @@ function PostArticle({ post, imageUrl }: Props) {
             {post.author.image && (
               <Image
                 className="h-10 w-10 rounded-full"
-                src={imageUrl || urlFor(post.author.image).url()!}
+                src={post.imageUrl || urlFor(post.author.image).url()!}
                 alt=""
                 width={30}
                 height={30}
