@@ -3546,6 +3546,11 @@
   dependencies:
     "@babel/runtime" "^7.12.5"
 
+"@tomfreudenberg/next-auth-mock@^0.5.6":
+  version "0.5.6"
+  resolved "https://registry.yarnpkg.com/@tomfreudenberg/next-auth-mock/-/next-auth-mock-0.5.6.tgz#d4490f2408b6d7e8f471463c006fb990563a0311"
+  integrity sha512-fSZJY5rUyj8GIcJI450ZV7FV/CMzpjUUGhPiaRyQo9l7l5mLvrnNe1MymzOnLpgXIkFja+CF/UHFGW807QcwmA==
+
 "@tsconfig/node10@^1.0.7":
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/@tsconfig/node10/-/node10-1.0.9.tgz#df4907fc07a886922637b15e02d4cebc4c0021b2"
