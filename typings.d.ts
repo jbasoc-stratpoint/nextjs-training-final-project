@@ -17,6 +17,7 @@ export interface Post {
     current: string;
   };
   body: [object];
+  fallbackbody?: string;
 }
 
 export interface Comment {

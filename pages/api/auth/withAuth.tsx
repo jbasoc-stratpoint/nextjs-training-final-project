@@ -1,4 +1,4 @@
-import { getSession, signIn } from 'next-auth/react';
+import { getSession, signIn, useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import Footer from '../../../components/Footer/Footer';
 import Header from '../../../components/Header/Header';
@@ -13,17 +13,29 @@ const withAuth = (Component: React.FunctionComponent<Props>) => {
   const AuthenticatedComponent = (props: Props) => {
     const [loading, setLoading] = useState(true);
 
+    const { data: session, status } = useSession();
+    console.log(session);
+    console.log(status);
+
     useEffect(() => {
       const securePage = async () => {
         const session = await getSession();
+
         if (!session) {
+          console.log('PASOK SA SIGN IN');
           signIn();
         } else {
           setLoading(false);
         }
       };
-      securePage();
-    }, []);
+
+      if (status !== 'authenticated') {
+        securePage();
+      } else {
+        setLoading(false);
+      }
+    }, [status]);
+
     if (loading) {
       return (
         <div className="mx-auto max-w-7xl flex items-center justify-center min-h-screen">

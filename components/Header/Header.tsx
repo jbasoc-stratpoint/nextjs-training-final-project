@@ -7,6 +7,8 @@ const navList = require('../NavBar/navList.json');
 
 function Header() {
   const { data: session, status } = useSession();
+  console.log('session');
+  console.log(session);
   const loading = status === 'loading';
 
   return (

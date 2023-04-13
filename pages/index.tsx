@@ -8,8 +8,9 @@ import { Post } from '../typings';
 
 interface Props {
   posts: [Post];
+  imageUrl?: string;
 }
-const Home = ({ posts }: Props) => {
+const Home = ({ posts, imageUrl }: Props) => {
   return (
     <div className="mx-auto max-w-7xl min-h-screen">
       <Head>
@@ -45,7 +46,7 @@ const Home = ({ posts }: Props) => {
       {/* Posts */}
       <div className="grid grid-cols-1 p-2 sm:grid-cols-2 md:gap-6 md:p-6 lg:grid-cols-3">
         {posts.map((post) => (
-          <PostCard post={post} key={post._id} />
+          <PostCard post={post} imageUrl={imageUrl} key={post._id} />
         ))}
       </div>
       <div className="m-auto" />

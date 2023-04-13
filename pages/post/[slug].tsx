@@ -9,6 +9,7 @@ import withAuth from '../api/auth/withAuth';
 // import {} from 'next-auth/client'
 interface Props {
   post: Post;
+  imageUrl?: string;
 }
 
 interface IFormInput {
@@ -18,7 +19,7 @@ interface IFormInput {
   comment: string;
 }
 
-function PostArticle({ post }: Props) {
+function PostArticle({ post, imageUrl }: Props) {
   const [submitted, setSubmitted] = useState(false);
 
   const {
@@ -48,7 +49,7 @@ function PostArticle({ post }: Props) {
         {post.mainImage && (
           <Image
             className="h-40 w-full object-cover"
-            src={urlFor(post.mainImage).url()!}
+            src={imageUrl || urlFor(post.mainImage).url()!}
             width={1280}
             height={100}
             alt=""
@@ -64,7 +65,7 @@ function PostArticle({ post }: Props) {
             {post.author.image && (
               <Image
                 className="h-10 w-10 rounded-full"
-                src={urlFor(post.author.image).url()!}
+                src={imageUrl || urlFor(post.author.image).url()!}
                 alt=""
                 width={30}
                 height={30}
@@ -78,27 +79,31 @@ function PostArticle({ post }: Props) {
             </p>
           </div>
           <div className="mt-10">
-            <PortableText
-              dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
-              projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
-              content={post.body}
-              serializers={{
-                h1: (props: any) => (
-                  <h1 className="my-5 text-2xl font-bold" {...props} />
-                ),
-                h2: (props: any) => (
-                  <h2 className="my-5 text-xl font-bold" {...props} />
-                ),
-                li: ({ children }: any) => (
-                  <li className="ml-4 list-disc">{children}</li>
-                ),
-                link: ({ href, children }: any) => (
-                  <a href={href} className="text-blue-500 hover:underline">
-                    {children}
-                  </a>
-                ),
-              }}
-            />
+            {post.fallbackbody ? (
+              <div>{post.fallbackbody}</div>
+            ) : (
+              <PortableText
+                dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
+                projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
+                content={post.body}
+                serializers={{
+                  h1: (props: any) => (
+                    <h1 className="my-5 text-2xl font-bold" {...props} />
+                  ),
+                  h2: (props: any) => (
+                    <h2 className="my-5 text-xl font-bold" {...props} />
+                  ),
+                  li: ({ children }: any) => (
+                    <li className="ml-4 list-disc">{children}</li>
+                  ),
+                  link: ({ href, children }: any) => (
+                    <a href={href} className="text-blue-500 hover:underline">
+                      {children}
+                    </a>
+                  ),
+                }}
+              />
+            )}
           </div>
         </article>
         <hr className="mx-auto my-5 max-w-lg border border-yellow-500" />
