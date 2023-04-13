@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import PostArticle from './[slug]';
+import PostArticle from '../pages/post/[slug]';
 
 export default {
   title: 'Pages/Article',
